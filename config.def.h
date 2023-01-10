@@ -61,6 +61,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray
 static const char *termcmd[]  = { "alacritty", NULL };
 
 #include "shiftview.c"
+#include "maximize.c"
 static Keychord keychords[] = {
 	/* Keys        						function        argument */
 	{1, {{MODKEY, XK_r}},					spawn,          {.v = dmenucmd } },
@@ -72,6 +73,11 @@ static Keychord keychords[] = {
 	{1, {{MODKEY, XK_d}},					incnmaster,     {.i = -1 } },
 	{1, {{MODKEY, XK_h}},					shiftview,      {.i = -1 } },
 	{1, {{MODKEY, XK_l}},					shiftview,      {.i = +1 } },
+	{1, {{MODKEY|ShiftMask, XK_h}},				togglehorizontalmax, {0} },
+	{1, {{MODKEY|ShiftMask, XK_l}},				togglehorizontalmax, {0} },
+	{1, {{MODKEY|ShiftMask, XK_j}},				toggleverticalmax,   {0} },
+	{1, {{MODKEY|ShiftMask, XK_k}},				toggleverticalmax,   {0} },
+	{1, {{MODKEY, XK_f}},					togglemaximize,      {0} },
 	{1, {{MODKEY|ShiftMask, XK_h}},				setmfact,       {.f = -0.01} },
 	{1, {{MODKEY|ShiftMask, XK_l}},				setmfact,       {.f = +0.01} },
 	{1, {{MODKEY, XK_m}},					zoom,           {0} },

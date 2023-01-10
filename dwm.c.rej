@@ -1,11 +1,10 @@
---- dwm.c.orig
+--- dwm.c
 +++ dwm.c
-@@ -93,7 +93,7 @@ struct Client {
- 	int basew, baseh, incw, inch, maxw, maxh, minw, minh;
- 	int bw, oldbw;
- 	unsigned int tags;
--	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
-+	int ismax, wasfloating, isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
- 	Client *next;
- 	Client *snext;
- 	Monitor *mon;
+@@ -211,6 +222,7 @@ static void sendmon(Client *c, Monitor *m);
+ static void setclientstate(Client *c, long state);
+ static void setfocus(Client *c);
+ static void setfullscreen(Client *c, int fullscreen);
++static void setgaps(const Arg *arg);
+ static void setlayout(const Arg *arg);
+ static void setmfact(const Arg *arg);
+ static void setup(void);

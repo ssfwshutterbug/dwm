@@ -77,6 +77,7 @@ static Keychord keychords[] = {
 	{2, {{MODKEY, XK_backslash}, {0, XK_t}},		setlayout,      {.v = &layouts[0]} },
 	{2, {{MODKEY, XK_backslash}, {0, XK_f}},		setlayout,      {.v = &layouts[1]} },
 	{2, {{MODKEY, XK_backslash}, {0, XK_m}},		setlayout,      {.v = &layouts[2]} },
+	{2, {{MODKEY, XK_backslash}, {0, XK_s}},		togglesticky,   {0} },
 	{1, {{MODKEY, XK_space}},				setlayout,      {0} },
 	{1, {{MODKEY|ShiftMask, XK_space}},			togglefloating, {0} },
 	{1, {{MODKEY, XK_0}},					view,           {.ui = ~0 } },

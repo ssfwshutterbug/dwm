@@ -64,6 +64,8 @@ static const Layout layouts[] = {
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char scratchpadname[] = "scratchpad";
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 
 #include "shiftview.c"
 #include "maximize.c"
@@ -71,6 +73,7 @@ static Keychord keychords[] = {
 	/* Keys        						function        argument */
 	{1, {{MODKEY, XK_r}},					spawn,          {.v = dmenucmd } },
 	{1, {{MODKEY, XK_n}}, 					spawn,          {.v = termcmd } },
+	{1, {{MODKEY, XK_semicolon}}, 				togglescratch,  {.v = scratchpadcmd } },
 	{1, {{MODKEY, XK_b}},					togglebar,      {0} },
 	{1, {{MODKEY, XK_j}},					focusstack,     {.i = +1 } },
 	{1, {{MODKEY, XK_k}},					focusstack,     {.i = -1 } },
@@ -83,8 +86,8 @@ static Keychord keychords[] = {
 	{1, {{MODKEY|ShiftMask, XK_j}},				toggleverticalmax,   {0} },
 	{1, {{MODKEY|ShiftMask, XK_k}},				toggleverticalmax,   {0} },
 	{1, {{MODKEY, XK_f}},					togglemaximize,      {0} },
-	{1, {{MODKEY|ShiftMask, XK_h}},				setmfact,       {.f = -0.01} },
-	{1, {{MODKEY|ShiftMask, XK_l}},				setmfact,       {.f = +0.01} },
+	{1, {{MODKEY|Mod1Mask, XK_h}},				setmfact,       {.f = -0.01} },
+	{1, {{MODKEY|Mod1Mask, XK_l}},				setmfact,       {.f = +0.01} },
 	{1, {{MODKEY, XK_m}},					zoom,           {0} },
 	{1, {{MODKEY, XK_Tab}},					view,           {0} },
 	{1, {{MODKEY, XK_BackSpace}},				killclient,     {0} },

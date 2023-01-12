@@ -1,15 +1,18 @@
 --- dwm.c
 +++ dwm.c
-@@ -98,9 +104,11 @@ struct Client {
- 	int basew, baseh, incw, inch, maxw, maxh, minw, minh, hintsvalid;
- 	int bw, oldbw;
- 	unsigned int tags;
--	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
-+	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen, isterminal, noswallow;
-+	pid_t pid;
- 	Client *next;
- 	Client *snext;
-+	Client *swallowing;
- 	Monitor *mon;
- 	Window win;
- };
+@@ -212,6 +212,7 @@ static void tagmon(const Arg *arg);
+ static void tile(Monitor *m);
+ static void togglebar(const Arg *arg);
+ static void togglefloating(const Arg *arg);
++static void togglescratch(const Arg *arg);
+ static void toggletag(const Arg *arg);
+ static void toggleview(const Arg *arg);
+ static void unfocus(Client *c, int setfocus);
+@@ -1651,6 +1662,7 @@ spawn(const Arg *arg)
+ {
+ 	if (arg->v == dmenucmd)
+ 		dmenumon[0] = '0' + selmon->num;
++	selmon->tagset[selmon->seltags] &= ~scratchtag;
+ 	if (fork() == 0) {
+ 		if (dpy)
+ 			close(ConnectionNumber(dpy));

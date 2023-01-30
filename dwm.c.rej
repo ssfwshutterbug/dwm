@@ -1,18 +1,10 @@
 --- dwm.c
 +++ dwm.c
-@@ -212,6 +212,7 @@ static void tagmon(const Arg *arg);
- static void tile(Monitor *m);
+@@ -214,6 +217,7 @@ static void tagmon(const Arg *arg);
+ static void tile(Monitor *);
  static void togglebar(const Arg *arg);
  static void togglefloating(const Arg *arg);
 +static void togglescratch(const Arg *arg);
  static void toggletag(const Arg *arg);
  static void toggleview(const Arg *arg);
  static void unfocus(Client *c, int setfocus);
-@@ -1651,6 +1662,7 @@ spawn(const Arg *arg)
- {
- 	if (arg->v == dmenucmd)
- 		dmenumon[0] = '0' + selmon->num;
-+	selmon->tagset[selmon->seltags] &= ~scratchtag;
- 	if (fork() == 0) {
- 		if (dpy)
- 			close(ConnectionNumber(dpy));

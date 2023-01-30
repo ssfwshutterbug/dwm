@@ -31,7 +31,7 @@ static const Rule rules[] = {
 	/* class           instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
 	{ "Gimp",          NULL,     NULL,           0,         1,          0,           0,        -1 },
 	{ "Firefox",       NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
-	{ "St",            NULL,     NULL,           0,         0,          1,           0,        -1 },
+	{ "st-256color",   NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ "Alacritty",     NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ NULL,      	   NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
@@ -83,8 +83,8 @@ static Keychord keychords[] = {
 	{1, {{MODKEY|ShiftMask, XK_j}},				toggleverticalmax,   {0} },
 	{1, {{MODKEY|ShiftMask, XK_k}},				toggleverticalmax,   {0} },
 	{1, {{MODKEY, XK_f}},					togglemaximize,      {0} },
-	{1, {{MODKEY|ShiftMask, XK_h}},				setmfact,       {.f = -0.01} },
-	{1, {{MODKEY|ShiftMask, XK_l}},				setmfact,       {.f = +0.01} },
+	{1, {{MODKEY|Mod1Mask, XK_h}},				setmfact,       {.f = -0.01} },
+	{1, {{MODKEY|Mod1Mask, XK_l}},				setmfact,       {.f = +0.01} },
 	{1, {{MODKEY, XK_m}},					zoom,           {0} },
 	{1, {{MODKEY, XK_Tab}},					view,           {0} },
 	{1, {{MODKEY, XK_BackSpace}},				killclient,     {0} },
